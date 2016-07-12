@@ -6,7 +6,7 @@
 //  Copyright © 2016年 MingleChang. All rights reserved.
 //
 
-#import "MCURLSession.h"
+#import "MCNetwork.h"
 
 @interface MCURLSession ()<NSURLSessionDelegate,NSURLSessionTaskDelegate>
 @property(nonatomic,strong,readwrite)NSURLSessionConfiguration *sessionConfiguration;
@@ -15,7 +15,7 @@
 @end
 
 @implementation MCURLSession
-
+#pragma mark - Init
 -(instancetype)init{
     return [self initWithSessionConfiguration:nil];
 }
@@ -33,6 +33,13 @@
     return self;
 }
 
+#pragma mark - Create Task
+-(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request{
+    NSURLSessionTask *sessionTask=[self.session dataTaskWithRequest:request];
+    MCURLSessionTask *task=[MCURLSessionTask mc_taskWithSessionTask:sessionTask];
+    return task;
+}
+
 #pragma mark - Delegate
 #pragma mark - NSURLSession Delegate
 // 当不再需要连接时，调用Session的invalidateAndCancel直接关闭，或者调用finishTasksAndInvalidate等待当前Task结束后关闭。这时Delegate会收到URLSession:didBecomeInvalidWithError:这个事件。
@@ -41,7 +48,7 @@
 }
 // 处理用户验证
 -(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{
-    
+//    completionHandler(NSURLSessionAuthChallengeUseCredential,nil);
 }
 // 如果用户启用后台下载，当应用在后台下载完所有的task之后将会调用该方法
 -(void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session{
@@ -49,11 +56,12 @@
 }
 //请求相关代理
 #pragma mark - NSURLSessionTask Delegate
+//目前测试情况，GET不会进入该方法，POST会进入该方法
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 willPerformHTTPRedirection:(NSHTTPURLResponse *)response
         newRequest:(NSURLRequest *)request
  completionHandler:(void (^)(NSURLRequest * __nullable))completionHandler{
-    
+    completionHandler(request);
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
@@ -66,7 +74,7 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
  needNewBodyStream:(void (^)(NSInputStream * __nullable bodyStream))completionHandler{
     
 }
-
+//使用POST上传数据，如果request的httpBody有内容方会进入该方法
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
    didSendBodyData:(int64_t)bytesSent
     totalBytesSent:(int64_t)totalBytesSent
@@ -83,7 +91,7 @@ didCompleteWithError:(nullable NSError *)error{
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
 didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
-    
+    completionHandler(NSURLSessionResponseAllow);
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
 didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask{
@@ -100,7 +108,7 @@ didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask{
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
  willCacheResponse:(NSCachedURLResponse *)proposedResponse
  completionHandler:(void (^)(NSCachedURLResponse * __nullable cachedResponse))completionHandler{
-    
+    completionHandler(proposedResponse);
 }
 
 #pragma mark - NSURLSessionDownload Delegate

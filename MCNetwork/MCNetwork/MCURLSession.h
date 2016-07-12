@@ -8,18 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class MCURLSessionTask;
+
 @interface MCURLSession : NSObject
 
 @property(nonatomic,strong,readonly)NSURLSession *session;
 
 @property(nonatomic,strong,readonly)NSOperationQueue *operationQueue;
 
-@property(nonatomic,strong,readonly)NSArray *tasks;
+//@property(nonatomic,strong,readonly)NSArray *tasks;
+//
+//@property(nonatomic,strong,readonly)NSArray *dataTasks;
+//
+//@property(nonatomic,strong,readonly)NSArray *uploadTasks;
+//
+//@property(nonatomic,strong,readonly)NSArray *downloadTasks;
 
-@property(nonatomic,strong,readonly)NSArray *dataTasks;
-
-@property(nonatomic,strong,readonly)NSArray *uploadTasks;
-
-@property(nonatomic,strong,readonly)NSArray *downloadTasks;
+-(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request;
 
 @end

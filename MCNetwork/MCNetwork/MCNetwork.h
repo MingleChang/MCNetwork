@@ -9,6 +9,7 @@
 #ifndef MCNetwork_h
 #define MCNetwork_h
 
+#import "MCNetworkConfigure.h"
 #import "MCURLSession.h"
 #import "MCURLSessionTask.h"
 

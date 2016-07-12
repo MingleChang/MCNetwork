@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger,MCURLSessionTaskType){
+    MCURLSessionTaskTypeUnknown=0,
     MCURLSessionTaskTypeData=1,
     MCURLSessionTaskTypeUpload,
     MCURLSessionTaskTypeDownload,
@@ -17,10 +18,11 @@ typedef NS_ENUM(NSUInteger,MCURLSessionTaskType){
 
 @interface MCURLSessionTask : NSObject
 
-@property(nonatomic,strong)NSURLSessionTask *task;
+@property(nonatomic,strong,readonly)NSURLSessionTask *sessionTask;
+@property (nonatomic,assign,readonly)NSUInteger taskIdentifier;
+@property(nonatomic,assign,readonly)MCURLSessionTaskType taskType;
 
-@property(nonatomic,assign)MCURLSessionTaskType taskType;
-
++(MCURLSessionTask *)mc_taskWithSessionTask:(NSURLSessionTask *)sessionTask;
 #pragma mark - Data
 
 #pragma mark - Upload
