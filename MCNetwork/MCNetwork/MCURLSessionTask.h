@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MCNetwork.h"
 
 typedef NS_ENUM(NSUInteger,MCURLSessionTaskType){
     MCURLSessionTaskTypeUnknown=0,
@@ -22,7 +23,15 @@ typedef NS_ENUM(NSUInteger,MCURLSessionTaskType){
 @property (nonatomic,assign,readonly)NSUInteger taskIdentifier;
 @property(nonatomic,assign,readonly)MCURLSessionTaskType taskType;
 
+@property(nonatomic,copy)MCNetworkProgressBlock uploadProgressBlock;
+@property(nonatomic,copy)MCNetworkProgressBlock downloadProgressBlock;
+
 +(MCURLSessionTask *)mc_taskWithSessionTask:(NSURLSessionTask *)sessionTask;
+
+-(void)resume;
+-(void)suspend;
+-(void)cancel;
+
 #pragma mark - Data
 
 #pragma mark - Upload

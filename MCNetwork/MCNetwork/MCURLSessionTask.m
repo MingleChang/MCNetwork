@@ -30,6 +30,17 @@
     return lTask;
 }
 
+#pragma mark - Control
+-(void)resume{
+    [self.sessionTask resume];
+}
+-(void)suspend{
+    [self.sessionTask suspend];
+}
+-(void)cancel{
+    [self.sessionTask cancel];
+}
+
 #pragma mark - Getter And Setter
 -(NSUInteger)taskIdentifier{
     return self.sessionTask.taskIdentifier;

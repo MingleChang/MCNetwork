@@ -19,13 +19,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     MCURLSession *session=[[MCURLSession alloc]init];
-    NSURL *lURL=[NSURL URLWithString:@"https://www.baidu.com"];
+    NSURL *lURL=[NSURL URLWithString:@"http://www.baidu.com"];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-    [lRequest setHTTPMethod:@"POST"];
-    [lRequest setHTTPBody:[@"a=1" dataUsingEncoding:NSUTF8StringEncoding]];
-    NSURLSessionTask *task=[session.session dataTaskWithRequest:lRequest];
-    
-    [task resume];
+//    [lRequest setHTTPMethod:@"POST"];
+//    [lRequest setHTTPBody:[@"dsasdd" dataUsingEncoding:NSUTF8StringEncoding]];
+    MCURLSessionTask *task=[session mc_taskWithRequest:lRequest];
+    task.uploadProgressBlock=^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected){
+        NSLog(@"%lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
+    };
+    task.downloadProgressBlock=^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected){
+        NSLog(@"%lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
+    };
 }
 
 - (void)didReceiveMemoryWarning {
