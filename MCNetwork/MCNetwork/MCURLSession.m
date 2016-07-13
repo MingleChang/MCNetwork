@@ -80,7 +80,7 @@
 }
 #pragma mark - Create Session Task
 -(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request{
-    NSURLSessionTask *sessionTask=[self.session dataTaskWithRequest:request];
+    NSURLSessionTask *sessionTask=[self.session downloadTaskWithRequest:request];
     MCURLSessionTask *task=[MCURLSessionTask mc_taskWithSessionTask:sessionTask];
     [self addTask:task];
     [task resume];
@@ -152,7 +152,10 @@
     
 }
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
-    
+    MCURLSessionTask *sessionTask=[self findTaskBySessionTask:downloadTask];
+    if (sessionTask.downloadProgressBlock) {
+        sessionTask.downloadProgressBlock(bytesWritten,totalBytesWritten,totalBytesExpectedToWrite);
+    }
 }
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes{
     
