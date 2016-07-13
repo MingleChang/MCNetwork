@@ -80,7 +80,7 @@
 }
 #pragma mark - Create Session Task
 -(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request{
-    NSURLSessionTask *sessionTask=[self.session downloadTaskWithRequest:request];
+    NSURLSessionTask *sessionTask=[self.session dataTaskWithRequest:request];
     MCURLSessionTask *task=[MCURLSessionTask mc_taskWithSessionTask:sessionTask];
     [self addTask:task];
     [task resume];
