@@ -125,6 +125,7 @@
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{
     MCURLSessionTask *sessionTask=[self findTaskBySessionTask:task];
+    [self removeTask:sessionTask];
     if (sessionTask.completeBlock) {
         sessionTask.completeBlock((error?nil:[sessionTask.data copy]),error);
     }
