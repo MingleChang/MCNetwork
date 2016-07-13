@@ -124,7 +124,10 @@
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{
-    NSLog(@"Complate:%@",error);
+    MCURLSessionTask *sessionTask=[self findTaskBySessionTask:task];
+    if (sessionTask.completeBlock) {
+        sessionTask.completeBlock((error?nil:[sessionTask.data copy]),error);
+    }
 }
 
 #pragma mark - NSURLSessionData Delegate
@@ -139,6 +142,7 @@
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data{
     MCURLSessionTask *sessionTask=[self findTaskBySessionTask:dataTask];
+    [sessionTask.data appendData:data];
     if (sessionTask.downloadProgressBlock) {
         sessionTask.downloadProgressBlock(data.length,dataTask.countOfBytesReceived,dataTask.countOfBytesExpectedToReceive);
     }
@@ -149,7 +153,8 @@
 
 #pragma mark - NSURLSessionDownload Delegate
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location{
-    
+    MCURLSessionTask *sessionTask=[self findTaskBySessionTask:downloadTask];
+    sessionTask.data=[NSMutableData dataWithContentsOfURL:location];
 }
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite{
     MCURLSessionTask *sessionTask=[self findTaskBySessionTask:downloadTask];

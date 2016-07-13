@@ -20,6 +20,7 @@
     self=[super init];
     if (self) {
         self.sessionTask=sessionTask;
+        self.data=[NSMutableData data];
     }
     return self;
 }

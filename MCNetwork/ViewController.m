@@ -30,6 +30,14 @@
     task.downloadProgressBlock=^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected){
         NSLog(@"%lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
     };
+    task.completeBlock=^(NSData *data,NSError *error){
+        if (error) {
+            NSLog(@"%@",error);
+        }else{
+            NSString *lString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",lString);
+        }
+    };
 }
 
 - (void)didReceiveMemoryWarning {

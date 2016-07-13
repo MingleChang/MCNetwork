@@ -12,5 +12,6 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^MCNetworkProgressBlock)(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected);
+typedef void (^MCNetworkCompleteBlock)(NSData *data, NSError *error);
 
 #endif /* MCNetworkConfigure_h */

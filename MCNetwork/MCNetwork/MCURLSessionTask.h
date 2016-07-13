@@ -23,8 +23,11 @@ typedef NS_ENUM(NSUInteger,MCURLSessionTaskType){
 @property (nonatomic,assign,readonly)NSUInteger taskIdentifier;
 @property(nonatomic,assign,readonly)MCURLSessionTaskType taskType;
 
+@property(nonatomic,strong)NSMutableData *data;
+
 @property(nonatomic,copy)MCNetworkProgressBlock uploadProgressBlock;
 @property(nonatomic,copy)MCNetworkProgressBlock downloadProgressBlock;
+@property(nonatomic,copy)MCNetworkCompleteBlock completeBlock;
 
 +(MCURLSessionTask *)mc_taskWithSessionTask:(NSURLSessionTask *)sessionTask;
 
