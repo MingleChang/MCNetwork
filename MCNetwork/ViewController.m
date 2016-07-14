@@ -23,21 +23,33 @@
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
 //    [lRequest setHTTPMethod:@"POST"];
 //    [lRequest setHTTPBody:[@"dsasdd" dataUsingEncoding:NSUTF8StringEncoding]];
-    MCURLSessionTask *task=[session mc_taskWithRequest:lRequest];
-    task.uploadProgressBlock=^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected){
-        NSLog(@"%lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
-    };
-    task.downloadProgressBlock=^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected){
-        NSLog(@"%lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
-    };
-    task.completeBlock=^(NSData *data,NSError *error){
+    MCURLSessionTask *task=[session mc_taskWithRequest:lRequest uploadProgress:^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected) {
+        NSLog(@"UPLOAD %lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
+    } downloadProgress:^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected) {
+        NSLog(@"DOWNLOAD %lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
+    } complete:^(NSData *data, NSError *error) {
         if (error) {
             NSLog(@"%@",error);
         }else{
             NSString *lString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",lString);
         }
-    };
+    }];
+    
+//    task.uploadProgressBlock=^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected){
+//        NSLog(@"%lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
+//    };
+//    task.downloadProgressBlock=^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected){
+//        NSLog(@"%lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
+//    };
+//    task.completeBlock=^(NSData *data,NSError *error){
+//        if (error) {
+//            NSLog(@"%@",error);
+//        }else{
+//            NSString *lString=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//            NSLog(@"%@",lString);
+//        }
+//    };
 }
 
 - (void)didReceiveMemoryWarning {

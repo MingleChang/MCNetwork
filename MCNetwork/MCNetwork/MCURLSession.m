@@ -8,6 +8,65 @@
 
 #import "MCNetwork.h"
 
+#pragma mark - MCURLSessionTask
+@interface MCURLSessionTask ()
+
+@property(nonatomic,strong,readwrite)NSURLSessionTask *sessionTask;
+@property(nonatomic,strong)NSMutableData *data;
+
++(MCURLSessionTask *)mc_taskWithSessionTask:(NSURLSessionTask *)sessionTask;
+
+@end
+
+@implementation MCURLSessionTask
+#pragma mark - Init
+-(instancetype)initWithSessionTask:(NSURLSessionTask *)sessionTask{
+    self=[super init];
+    if (self) {
+        self.sessionTask=sessionTask;
+        self.data=[NSMutableData data];
+    }
+    return self;
+}
+
+#pragma mark - Create
++(MCURLSessionTask *)mc_taskWithSessionTask:(NSURLSessionTask *)sessionTask{
+    MCURLSessionTask *lTask=[[MCURLSessionTask alloc]initWithSessionTask:sessionTask];
+    return lTask;
+}
+
+#pragma mark - Control
+-(void)mc_resume{
+    [self.sessionTask resume];
+}
+-(void)mc_suspend{
+    [self.sessionTask suspend];
+}
+-(void)mc_cancel{
+    [self.sessionTask cancel];
+}
+
+#pragma mark - Getter And Setter
+-(NSUInteger)taskIdentifier{
+    return self.sessionTask.taskIdentifier;
+}
+-(MCURLSessionTaskType)taskType{
+    if ([self.sessionTask isKindOfClass:[NSURLSessionDataTask class]]) {
+        return MCURLSessionTaskTypeData;
+    }else if ([self.sessionTask isKindOfClass:[NSURLSessionUploadTask class]]){
+        return MCURLSessionTaskTypeUpload;
+    }else if ([self.sessionTask isKindOfClass:[NSURLSessionDownloadTask class]]){
+        return MCURLSessionTaskTypeDownload;
+    }else if ([self.sessionTask isKindOfClass:[NSURLSessionStreamTask class]]){
+        return MCURLSessionTaskTypeStream;
+    }else{
+        return MCURLSessionTaskTypeUnknown;
+    }
+}
+@end
+
+
+#pragma mark - MCURLSession
 @interface MCURLSession ()<NSURLSessionDelegate,NSURLSessionTaskDelegate>
 @property(nonatomic,strong,readwrite)NSURLSessionConfiguration *sessionConfiguration;
 @property(nonatomic,strong,readwrite)NSOperationQueue *operationQueue;
@@ -83,15 +142,23 @@
     NSURLSessionTask *sessionTask=[self.session dataTaskWithRequest:request];
     MCURLSessionTask *task=[MCURLSessionTask mc_taskWithSessionTask:sessionTask];
     [self addTask:task];
-    [task resume];
+    [task mc_resume];
     return task;
 }
-
+-(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete{
+    MCURLSessionTask *task=[self mc_taskWithRequest:request];
+    task.uploadProgressBlock=uploadProgress;
+    task.downloadProgressBlock=downloadProgress;
+    task.completeBlock=complete;
+    return task;
+}
 #pragma mark - Delegate
 #pragma mark - NSURLSession Delegate
 // 当不再需要连接时，调用Session的invalidateAndCancel直接关闭，或者调用finishTasksAndInvalidate等待当前Task结束后关闭。这时Delegate会收到URLSession:didBecomeInvalidWithError:这个事件。
 -(void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error{
-    
+    if (self.didBecomeInvalidBlock) {
+        self.didBecomeInvalidBlock(error);
+    }
 }
 // 处理用户验证
 -(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{

@@ -14,7 +14,6 @@
 		82B4196A1D1F876500040453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B419691D1F876500040453 /* Assets.xcassets */; };
 		82B4196D1D1F876500040453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B4196B1D1F876500040453 /* LaunchScreen.storyboard */; };
 		82B4197A1D1F87BD00040453 /* MCURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419771D1F87BD00040453 /* MCURLSession.m */; };
-		82B4197B1D1F87BD00040453 /* MCURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419791D1F87BD00040453 /* MCURLSessionTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +31,6 @@
 		82B419751D1F87BD00040453 /* MCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetwork.h; sourceTree = "<group>"; };
 		82B419761D1F87BD00040453 /* MCURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSession.h; sourceTree = "<group>"; };
 		82B419771D1F87BD00040453 /* MCURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSession.m; sourceTree = "<group>"; };
-		82B419781D1F87BD00040453 /* MCURLSessionTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSessionTask.h; sourceTree = "<group>"; };
-		82B419791D1F87BD00040453 /* MCURLSessionTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSessionTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +92,6 @@
 				820563171D20061300F47C81 /* MCNetworkConfigure.h */,
 				82B419761D1F87BD00040453 /* MCURLSession.h */,
 				82B419771D1F87BD00040453 /* MCURLSession.m */,
-				82B419781D1F87BD00040453 /* MCURLSessionTask.h */,
-				82B419791D1F87BD00040453 /* MCURLSessionTask.m */,
 			);
 			path = MCNetwork;
 			sourceTree = "<group>";
@@ -175,7 +170,6 @@
 				82B419651D1F876400040453 /* ViewController.m in Sources */,
 				82B419621D1F876400040453 /* AppDelegate.m in Sources */,
 				82B4195F1D1F876400040453 /* main.m in Sources */,
-				82B4197B1D1F87BD00040453 /* MCURLSessionTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,5 @@
 
 #import "MCNetworkConfigure.h"
 #import "MCURLSession.h"
-#import "MCURLSessionTask.h"
 
 #endif /* MCNetwork_h */
