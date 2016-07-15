@@ -19,9 +19,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     MCURLSession *session=[[MCURLSession alloc]init];
-    NSURL *lURL=[NSURL URLWithString:@"http://www.baidu.com"];
+    NSURL *lURL=[NSURL URLWithString:@"http://appapi.unknowntech.cn:7140/"];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-//    [lRequest setHTTPMethod:@"POST"];
+    [lRequest setHTTPMethod:@"POST"];
+    
 //    [lRequest setHTTPBody:[@"dsasdd" dataUsingEncoding:NSUTF8StringEncoding]];
     MCURLSessionTask *task=[session mc_taskWithRequest:lRequest uploadProgress:^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected) {
         NSLog(@"UPLOAD %lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
