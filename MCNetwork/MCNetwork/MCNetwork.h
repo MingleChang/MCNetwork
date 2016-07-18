@@ -11,5 +11,7 @@
 
 #import "MCNetworkConfigure.h"
 #import "MCURLSession.h"
+#import "MCRequestSerialization.h"
+#import "MCResponseSerialization.h"
 
 #endif /* MCNetwork_h */

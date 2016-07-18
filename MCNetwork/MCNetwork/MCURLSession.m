@@ -7,6 +7,7 @@
 //
 
 #import "MCNetwork.h"
+#import "MCRequestSerialization.h"
 
 #pragma mark - MCURLSessionTask
 @interface MCURLSessionTask ()
@@ -86,6 +87,9 @@
     if (!self) {
         return nil;
     }
+    self.requestSerialization=[[MCNetworkRequestSerialization alloc]init];
+    self.responseSerialization=[[MCNetworkResponseSerialization alloc]init];
+    
     self.taskInfoByIdentifier=[NSMutableDictionary dictionary];
     
     self.sessionConfiguration=configuration ? configuration:[NSURLSessionConfiguration defaultSessionConfiguration];
@@ -152,6 +156,10 @@
     task.completeBlock=complete;
     return task;
 }
+-(MCURLSessionTask *)mc_GET:(NSString *)urlString andParam:(NSDictionary *)param uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete{
+    NSURLRequest *lRequest=[self.requestSerialization requestMethod:GET_METHOD withURLString:urlString andParam:param];
+    return [self mc_taskWithRequest:lRequest uploadProgress:uploadProgress downloadProgress:downloadProgress complete:complete];
+}
 #pragma mark - Delegate
 #pragma mark - NSURLSession Delegate
 // 当不再需要连接时，调用Session的invalidateAndCancel直接关闭，或者调用finishTasksAndInvalidate等待当前Task结束后关闭。这时Delegate会收到URLSession:didBecomeInvalidWithError:这个事件。
@@ -193,8 +201,10 @@
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{
     MCURLSessionTask *sessionTask=[self findTaskBySessionTask:task];
     [self removeTask:sessionTask];
+    NSError *lError=error;
+    id responseObject=[self.responseSerialization responseWithData:[sessionTask.data copy] error:&lError];
     if (sessionTask.completeBlock) {
-        sessionTask.completeBlock((error?nil:[sessionTask.data copy]),error);
+        sessionTask.completeBlock((lError?nil:responseObject),lError);
     }
 }
 

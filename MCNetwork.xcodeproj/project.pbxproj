@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		823BFB7A1D3C6DFD00F61BA3 /* MCRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 823BFB791D3C6DFD00F61BA3 /* MCRequestSerialization.m */; };
+		823BFB7D1D3C6E1600F61BA3 /* MCResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 823BFB7C1D3C6E1600F61BA3 /* MCResponseSerialization.m */; };
 		82B4195F1D1F876400040453 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B4195E1D1F876400040453 /* main.m */; };
 		82B419621D1F876400040453 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419611D1F876400040453 /* AppDelegate.m */; };
 		82B419651D1F876400040453 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419641D1F876400040453 /* ViewController.m */; };
@@ -14,10 +16,15 @@
 		82B4196A1D1F876500040453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B419691D1F876500040453 /* Assets.xcassets */; };
 		82B4196D1D1F876500040453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B4196B1D1F876500040453 /* LaunchScreen.storyboard */; };
 		82B4197A1D1F87BD00040453 /* MCURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419771D1F87BD00040453 /* MCURLSession.m */; };
+		82EE1F051D3CCD910074C564 /* MCNetworkConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		820563171D20061300F47C81 /* MCNetworkConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCNetworkConfigure.h; sourceTree = "<group>"; };
+		823BFB781D3C6DFD00F61BA3 /* MCRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRequestSerialization.h; sourceTree = "<group>"; };
+		823BFB791D3C6DFD00F61BA3 /* MCRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRequestSerialization.m; sourceTree = "<group>"; };
+		823BFB7B1D3C6E1600F61BA3 /* MCResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCResponseSerialization.h; sourceTree = "<group>"; };
+		823BFB7C1D3C6E1600F61BA3 /* MCResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCResponseSerialization.m; sourceTree = "<group>"; };
 		82B4195A1D1F876400040453 /* MCNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B4195E1D1F876400040453 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		82B419601D1F876400040453 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,6 +38,7 @@
 		82B419751D1F87BD00040453 /* MCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetwork.h; sourceTree = "<group>"; };
 		82B419761D1F87BD00040453 /* MCURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSession.h; sourceTree = "<group>"; };
 		82B419771D1F87BD00040453 /* MCURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSession.m; sourceTree = "<group>"; };
+		82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkConfigure.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +98,13 @@
 			children = (
 				82B419751D1F87BD00040453 /* MCNetwork.h */,
 				820563171D20061300F47C81 /* MCNetworkConfigure.h */,
+				82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */,
 				82B419761D1F87BD00040453 /* MCURLSession.h */,
 				82B419771D1F87BD00040453 /* MCURLSession.m */,
+				823BFB781D3C6DFD00F61BA3 /* MCRequestSerialization.h */,
+				823BFB791D3C6DFD00F61BA3 /* MCRequestSerialization.m */,
+				823BFB7B1D3C6E1600F61BA3 /* MCResponseSerialization.h */,
+				823BFB7C1D3C6E1600F61BA3 /* MCResponseSerialization.m */,
 			);
 			path = MCNetwork;
 			sourceTree = "<group>";
@@ -167,9 +180,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				82B4197A1D1F87BD00040453 /* MCURLSession.m in Sources */,
+				823BFB7A1D3C6DFD00F61BA3 /* MCRequestSerialization.m in Sources */,
 				82B419651D1F876400040453 /* ViewController.m in Sources */,
 				82B419621D1F876400040453 /* AppDelegate.m in Sources */,
 				82B4195F1D1F876400040453 /* main.m in Sources */,
+				82EE1F051D3CCD910074C564 /* MCNetworkConfigure.m in Sources */,
+				823BFB7D1D3C6E1600F61BA3 /* MCResponseSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
