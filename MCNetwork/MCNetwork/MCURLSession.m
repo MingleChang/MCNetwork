@@ -87,8 +87,6 @@
     if (!self) {
         return nil;
     }
-    self.requestSerialization=[[MCNetworkRequestSerialization alloc]init];
-    self.responseSerialization=[[MCNetworkResponseSerialization alloc]init];
     
     self.taskInfoByIdentifier=[NSMutableDictionary dictionary];
     
@@ -114,6 +112,22 @@
     }];
     
     return self;
+}
+
+#pragma mark - Setter And Getter
+-(id<MCRequestSerialization>)requestSerialization{
+    if (_requestSerialization) {
+        return _requestSerialization;
+    }
+    _requestSerialization=[[MCNetworkRequestSerialization alloc]init];
+    return _requestSerialization;
+}
+-(id<MCResponseSerialization>)responseSerialization{
+    if (_responseSerialization) {
+        return _responseSerialization;
+    }
+    _responseSerialization=[[MCNetworkResponseSerialization alloc]init];
+    return _responseSerialization;
 }
 
 #pragma mark - Session Task Manager

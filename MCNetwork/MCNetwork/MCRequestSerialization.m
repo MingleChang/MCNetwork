@@ -41,7 +41,7 @@
     NSString *lParamString=[lParamArray componentsJoinedByString:@"&"];
     NSURL *lURL=[NSURL URLWithString:lURLString];
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-    [lRequest setHTTPMethod:@"POST"];
+    [lRequest setHTTPMethod:POST_METHOD];
     [lRequest setHTTPBody:[lParamString dataUsingEncoding:NSUTF8StringEncoding]];
     return lRequest;
 }
