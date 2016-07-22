@@ -16,6 +16,9 @@
 
 #pragma mark - MCResponseSerialization
 -(id)responseWithData:(NSData *)data error:(NSError *__autoreleasing *)error{
+    if (*error) {
+        return nil;
+    }
     return data;
 }
 
