@@ -171,9 +171,14 @@
     return task;
 }
 -(MCURLSessionTask *)mc_GET:(NSString *)urlString andParam:(NSDictionary *)param uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete{
-    NSURLRequest *lRequest=[self.requestSerialization requestMethod:GET_METHOD withURLString:urlString andParam:param];
+    NSURLRequest *lRequest=[self.requestSerialization requestMethod:GET_METHOD withURLString:urlString andParam:param andFormData:nil];
     return [self mc_taskWithRequest:lRequest uploadProgress:uploadProgress downloadProgress:downloadProgress complete:complete];
 }
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString andParam:(NSDictionary *)param andFormData:(MCNetworkMultipartFormData *)formData uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete{
+    NSURLRequest *lRequest=[self.requestSerialization requestMethod:POST_METHOD withURLString:urlString andParam:param andFormData:formData];
+    return [self mc_taskWithRequest:lRequest uploadProgress:uploadProgress downloadProgress:downloadProgress complete:complete];
+}
+
 #pragma mark - Delegate
 #pragma mark - NSURLSession Delegate
 // 当不再需要连接时，调用Session的invalidateAndCancel直接关闭，或者调用finishTasksAndInvalidate等待当前Task结束后关闭。这时Delegate会收到URLSession:didBecomeInvalidWithError:这个事件。

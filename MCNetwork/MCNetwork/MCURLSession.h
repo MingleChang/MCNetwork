@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MCNetwork.h"
 
+@class MCNetworkMultipartFormData;
 @protocol MCRequestSerialization;
 @protocol MCResponseSerialization;
 
@@ -63,7 +64,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //-(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request;
 -(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete;
--(MCURLSessionTask *)mc_GET:(NSString *)urlString andParam:(NSDictionary *)param uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete;
+-(MCURLSessionTask *)mc_GET:(NSString *)urlString andParam:(NSDictionary * __nullable)param uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete;
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString andParam:(NSDictionary * __nullable)param andFormData:(MCNetworkMultipartFormData * __nullable)formData uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete;
+
 @end
 
 NS_ASSUME_NONNULL_END
