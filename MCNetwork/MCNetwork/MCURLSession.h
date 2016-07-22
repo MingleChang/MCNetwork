@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MCNetwork.h"
 
-@class MCNetworkMultipartFormData;
+@protocol MCNetworkFormData;
 @protocol MCRequestSerialization;
 @protocol MCResponseSerialization;
 
@@ -61,11 +61,28 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)id<MCRequestSerialization> requestSerialization;
 @property(nonatomic,strong)id<MCResponseSerialization> responseSerialization;
 
+-(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request
+                         uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
+                        downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
+                               complete:(MCNetworkCompleteBlock __nullable)complete;
 
-//-(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request;
--(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete;
--(MCURLSessionTask *)mc_GET:(NSString *)urlString andParam:(NSDictionary * __nullable)param uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete;
--(MCURLSessionTask *)mc_POST:(NSString *)urlString andParam:(NSDictionary * __nullable)param andFormData:(MCNetworkMultipartFormData * __nullable)formData uploadProgress:(MCNetworkProgressBlock)uploadProgress downloadProgress:(MCNetworkProgressBlock)downloadProgress complete:(MCNetworkCompleteBlock)complete;
+-(MCURLSessionTask *)mc_GET:(NSString *)urlString andParam:(NSDictionary * __nullable)param
+             uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
+           downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
+                   complete:(MCNetworkCompleteBlock __nullable)complete;
+
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+              uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
+            downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
+                    complete:(MCNetworkCompleteBlock __nullable)complete;
+
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+                 andFormData:(id<MCNetworkFormData> __nullable)formData
+              uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
+            downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
+                    complete:(MCNetworkCompleteBlock __nullable)complete;
 
 @end
 

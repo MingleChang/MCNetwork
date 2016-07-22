@@ -9,18 +9,20 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@protocol MCRequestSerialization <NSObject>
 
--(NSURLRequest *)requestMethod:(NSString *)method withURLString:(NSString *)urlString andParam:(NSDictionary  * __nullable)param andFormData:(MCNetworkMultipartFormData * __nullable)formData;
-
-@end
-
-@interface MCNetworkMultipartFormData : NSObject
+@protocol MCNetworkFormData  <NSObject>
 
 -(void)appendWithName:(NSString *)name data:(NSData *)data;
 -(void)appendWithName:(NSString *)name fileName:(NSString * __nullable)fileName mimeType:(NSString * __nullable)mimeType data:(NSData *)data;
 
 @end
+
+@protocol MCRequestSerialization <NSObject>
+
+-(NSURLRequest *)requestMethod:(NSString *)method withURLString:(NSString *)urlString andParam:(NSDictionary  * __nullable)param andFormData:(id<MCNetworkFormData> __nullable)formData;
+
+@end
+
 
 @interface MCNetworkRequestSerialization : NSObject <MCRequestSerialization>
 

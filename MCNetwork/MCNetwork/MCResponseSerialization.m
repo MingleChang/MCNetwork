@@ -14,7 +14,7 @@
 
 @implementation MCNetworkResponseSerialization
 
-#pragma mark -
+#pragma mark - MCResponseSerialization
 -(id)responseWithData:(NSData *)data error:(NSError *__autoreleasing *)error{
     return data;
 }

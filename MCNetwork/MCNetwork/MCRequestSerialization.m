@@ -35,7 +35,7 @@
 
 @end
 
-@interface MCNetworkMultipartFormData ()
+@interface MCNetworkMultipartFormData : NSObject <MCNetworkFormData>
 
 @property(nonatomic,strong)NSMutableArray *multipartDisposition;
 
@@ -53,7 +53,7 @@
 -(void)appendWithName:(NSString *)name data:(NSData *)data{
     [self appendWithName:name fileName:nil mimeType:nil data:data];
 }
--(void)appendWithName:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType data:(NSData *)data{
+-(void)appendWithName:(NSString *)name fileName:(NSString * __nullable)fileName mimeType:(NSString * __nullable)mimeType data:(NSData *)data{
     MCNetworkDisposition *lDisposition=[[MCNetworkDisposition alloc]init];
     lDisposition.name=name;
     lDisposition.fileName=fileName;
@@ -123,25 +123,11 @@
     [lRequest setHTTPBody:lBodyData];
     ;
     [lRequest setValue:HeaderContentType forHTTPHeaderField:CONTENT_TYPE];
-    [lRequest setValue:[NSString stringWithFormat:@"%li", [lBodyData length]] forHTTPHeaderField:CONTENT_LENGTH];
+    [lRequest setValue:[NSString stringWithFormat:@"%li", (unsigned long)[lBodyData length]] forHTTPHeaderField:CONTENT_LENGTH];
     return lRequest;
-    
-    
-//    NSString *lURLString=urlString;
-//    NSMutableArray *lParamArray=[NSMutableArray arrayWithCapacity:param.count];
-//    [param enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-//        NSString *lString=[NSString stringWithFormat:@"%@=%@",key,obj];
-//        [lParamArray addObject:lString];
-//    }];
-//    NSString *lParamString=[lParamArray componentsJoinedByString:@"&"];
-//    NSURL *lURL=[NSURL URLWithString:lURLString];
-//    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:lURL];
-//    [lRequest setHTTPMethod:POST_METHOD];
-//    [lRequest setHTTPBody:[lParamString dataUsingEncoding:NSUTF8StringEncoding]];
-//    return lRequest;
 }
 #pragma mark - MCRequestSerialization
--(NSURLRequest *)requestMethod:(NSString *)method withURLString:(NSString *)urlString andParam:(NSDictionary * __nullable)param andFormData:(MCNetworkMultipartFormData * __nullable)formData{
+-(NSURLRequest *)requestMethod:(NSString *)method withURLString:(NSString *)urlString andParam:(NSDictionary * __nullable)param andFormData:(id<MCNetworkFormData> __nullable)formData{
     if ([method isEqualToString:GET_METHOD]) {
         return [self GETRequestwithURLString:urlString andParam:param];
     }
