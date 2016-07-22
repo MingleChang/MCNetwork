@@ -32,8 +32,8 @@ UIKIT_EXTERN NSString* const HTTP_BODY_BOUNDARY;
 #define HeaderContentType [NSString stringWithFormat:@"multipart/form-data;boundary=%@",HTTP_BODY_BOUNDARY]
 #define StartBoundary   [NSString stringWithFormat:@"\r\n--%@\r\n",HTTP_BODY_BOUNDARY]
 #define EndBoundary     [NSString stringWithFormat:@"\r\n--%@--",HTTP_BODY_BOUNDARY]
-#define DataDisposition(name,filename) [NSString stringWithFormat:@"Content-Disposition:form-data;name=\"%@\";filename=\"%@\"\r\n",name,filename]
-#define StringDisposition(name) [NSString stringWithFormat:@"Content-Disposition:form-data;name=\"%@\"\r\n\r\n",name]
-#define ContentType(mimeType) [NSString stringWithFormat:@"Content-Type:%@\r\n\r\n",mimeType?mimeType:MIME_TYPE_BINARY]
+#define DataDisposition(name,filename) [NSString stringWithFormat:@"%@:form-data;name=\"%@\";filename=\"%@\"\r\n",CONTENT_DISPOSITION,name,filename]
+#define StringDisposition(name) [NSString stringWithFormat:@"%@:form-data;name=\"%@\"\r\n\r\n",CONTENT_DISPOSITION,name]
+#define ContentType(mimeType) [NSString stringWithFormat:@"%@:%@\r\n\r\n",CONTENT_TYPE,mimeType?mimeType:MIME_TYPE_BINARY]
 
 #endif /* MCNetworkConfigure_h */
