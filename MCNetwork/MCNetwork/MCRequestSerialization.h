@@ -17,6 +17,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface MCNetworkMultipartFormData : NSObject <MCNetworkFormData>
+
+
+@end
+
 @protocol MCRequestSerialization <NSObject>
 
 -(NSURLRequest *)requestMethod:(NSString *)method withURLString:(NSString *)urlString andParam:(NSDictionary  * __nullable)param andFormData:(id<MCNetworkFormData> __nullable)formData;

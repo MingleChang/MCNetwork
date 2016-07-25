@@ -17,6 +17,7 @@
 		82B4196D1D1F876500040453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B4196B1D1F876500040453 /* LaunchScreen.storyboard */; };
 		82B4197A1D1F87BD00040453 /* MCURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419771D1F87BD00040453 /* MCURLSession.m */; };
 		82EE1F051D3CCD910074C564 /* MCNetworkConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */; };
+		82FFB8111D45F6970079F92F /* a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82FFB8101D45F6970079F92F /* a.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		82B419761D1F87BD00040453 /* MCURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSession.h; sourceTree = "<group>"; };
 		82B419771D1F87BD00040453 /* MCURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSession.m; sourceTree = "<group>"; };
 		82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkConfigure.m; sourceTree = "<group>"; };
+		82FFB8101D45F6970079F92F /* a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		82B4195C1D1F876400040453 /* MCNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				82FFB8101D45F6970079F92F /* a.jpg */,
 				82B419741D1F878200040453 /* MCNetwork */,
 				82B419601D1F876400040453 /* AppDelegate.h */,
 				82B419611D1F876400040453 /* AppDelegate.m */,
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82B4196D1D1F876500040453 /* LaunchScreen.storyboard in Resources */,
+				82FFB8111D45F6970079F92F /* a.jpg in Resources */,
 				82B4196A1D1F876500040453 /* Assets.xcassets in Resources */,
 				82B419681D1F876500040453 /* Main.storyboard in Resources */,
 			);

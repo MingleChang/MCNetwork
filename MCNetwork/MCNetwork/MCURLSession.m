@@ -75,6 +75,8 @@
 
 @property(nonatomic,strong)NSMutableDictionary *taskInfoByIdentifier;
 
+@property(nonatomic,strong)dispatch_semaphore_t taskInfoSemaphore;
+
 @end
 
 @implementation MCURLSession
@@ -87,7 +89,7 @@
     if (!self) {
         return nil;
     }
-    
+    self.taskInfoSemaphore=dispatch_semaphore_create(1);
     self.taskInfoByIdentifier=[NSMutableDictionary dictionary];
     
     self.sessionConfiguration=configuration ? configuration:[NSURLSessionConfiguration defaultSessionConfiguration];
@@ -140,7 +142,9 @@
     return task;
 }
 -(void)addTask:(MCURLSessionTask *)task{
+    dispatch_semaphore_wait(self.taskInfoSemaphore, DISPATCH_TIME_FOREVER);
     [self.taskInfoByIdentifier setObject:task forKey:@(task.taskIdentifier)];
+    dispatch_semaphore_signal(self.taskInfoSemaphore);
 }
 -(void)addTaskBySessionTask:(NSURLSessionTask *)sessionTask{
     MCURLSessionTask *task=[MCURLSessionTask mc_taskWithSessionTask:sessionTask];
@@ -153,7 +157,14 @@
     [self removeTaskByTaskIdentifier:sessionTask.taskIdentifier];
 }
 -(void)removeTaskByTaskIdentifier:(NSUInteger )taskIdentifier{
+    dispatch_semaphore_wait(self.taskInfoSemaphore, DISPATCH_TIME_FOREVER);
     [self.taskInfoByIdentifier removeObjectForKey:@(taskIdentifier)];
+    dispatch_semaphore_signal(self.taskInfoSemaphore);
+}
+-(void)removeAllTask{
+    dispatch_semaphore_wait(self.taskInfoSemaphore, DISPATCH_TIME_FOREVER);
+    [self.taskInfoByIdentifier removeAllObjects];
+    dispatch_semaphore_signal(self.taskInfoSemaphore);
 }
 #pragma mark - Create Session Task
 -(MCURLSessionTask *)mc_taskWithRequest:(NSURLRequest *)request{

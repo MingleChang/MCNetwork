@@ -35,7 +35,7 @@
 
 @end
 
-@interface MCNetworkMultipartFormData : NSObject <MCNetworkFormData>
+@interface MCNetworkMultipartFormData()
 
 @property(nonatomic,strong)NSMutableArray *multipartDisposition;
 
