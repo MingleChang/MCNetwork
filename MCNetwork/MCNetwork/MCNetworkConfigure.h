@@ -25,9 +25,6 @@ UIKIT_EXTERN NSString* const CONTENT_DISPOSITION;
 UIKIT_EXTERN NSString* const CONTENT_TYPE;
 UIKIT_EXTERN NSString* const CONTENT_LENGTH;
 
-////MIME_TYPE
-//UIKIT_EXTERN NSString* const MIME_TYPE_BINARY;//二进制流，不知道下载文件类型
-
 UIKIT_EXTERN NSString* const HTTP_BODY_BOUNDARY;
 
 #define HeaderContentType [NSString stringWithFormat:@"multipart/form-data;boundary=%@",HTTP_BODY_BOUNDARY]
