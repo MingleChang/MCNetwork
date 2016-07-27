@@ -10,6 +10,7 @@
 #define MCNetworkConfigure_h
 
 #import <UIKit/UIKit.h>
+#import "MCMimeType.h"
 
 typedef void (^MCNetworkProgressBlock)(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected);
 typedef void (^MCNetworkCompleteBlock)(id responseObject, NSError *error);
@@ -24,8 +25,8 @@ UIKIT_EXTERN NSString* const CONTENT_DISPOSITION;
 UIKIT_EXTERN NSString* const CONTENT_TYPE;
 UIKIT_EXTERN NSString* const CONTENT_LENGTH;
 
-//MIME_TYPE
-UIKIT_EXTERN NSString* const MIME_TYPE_BINARY;
+////MIME_TYPE
+//UIKIT_EXTERN NSString* const MIME_TYPE_BINARY;//二进制流，不知道下载文件类型
 
 UIKIT_EXTERN NSString* const HTTP_BODY_BOUNDARY;
 

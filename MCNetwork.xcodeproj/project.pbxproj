@@ -16,6 +16,7 @@
 		82B4196A1D1F876500040453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B419691D1F876500040453 /* Assets.xcassets */; };
 		82B4196D1D1F876500040453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B4196B1D1F876500040453 /* LaunchScreen.storyboard */; };
 		82B4197A1D1F87BD00040453 /* MCURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419771D1F87BD00040453 /* MCURLSession.m */; };
+		82BCD0391D48998500E1DD3D /* MCMimeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BCD0381D48998500E1DD3D /* MCMimeType.m */; };
 		82EE1F051D3CCD910074C564 /* MCNetworkConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */; };
 		82FFB8111D45F6970079F92F /* a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82FFB8101D45F6970079F92F /* a.jpg */; };
 /* End PBXBuildFile section */
@@ -39,6 +40,8 @@
 		82B419751D1F87BD00040453 /* MCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetwork.h; sourceTree = "<group>"; };
 		82B419761D1F87BD00040453 /* MCURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSession.h; sourceTree = "<group>"; };
 		82B419771D1F87BD00040453 /* MCURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSession.m; sourceTree = "<group>"; };
+		82BCD0371D48998500E1DD3D /* MCMimeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMimeType.h; sourceTree = "<group>"; };
+		82BCD0381D48998500E1DD3D /* MCMimeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMimeType.m; sourceTree = "<group>"; };
 		82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkConfigure.m; sourceTree = "<group>"; };
 		82FFB8101D45F6970079F92F /* a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				82B419751D1F87BD00040453 /* MCNetwork.h */,
+				82BCD0371D48998500E1DD3D /* MCMimeType.h */,
+				82BCD0381D48998500E1DD3D /* MCMimeType.m */,
 				820563171D20061300F47C81 /* MCNetworkConfigure.h */,
 				82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */,
 				82B419761D1F87BD00040453 /* MCURLSession.h */,
@@ -189,6 +194,7 @@
 				82B419621D1F876400040453 /* AppDelegate.m in Sources */,
 				82B4195F1D1F876400040453 /* main.m in Sources */,
 				82EE1F051D3CCD910074C564 /* MCNetworkConfigure.m in Sources */,
+				82BCD0391D48998500E1DD3D /* MCMimeType.m in Sources */,
 				823BFB7D1D3C6E1600F61BA3 /* MCResponseSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

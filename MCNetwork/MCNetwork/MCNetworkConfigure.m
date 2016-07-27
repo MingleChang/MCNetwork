@@ -15,6 +15,4 @@ NSString* const CONTENT_DISPOSITION=@"Content-Disposition";
 NSString* const CONTENT_TYPE    =   @"Content-Type";
 NSString* const CONTENT_LENGTH  =   @"Content-Length";
 
-NSString* const MIME_TYPE_BINARY=   @"application/octet-stream";
-
 NSString* const HTTP_BODY_BOUNDARY  =   @"com.minglechang.boundary";
