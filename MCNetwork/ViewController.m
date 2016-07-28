@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "MCNetwork/MCNetwork.h"
+#import "MCNetwork.h"
 
 @interface ViewController ()
 @property(nonatomic,strong)MCURLSession *session;

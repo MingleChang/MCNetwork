@@ -7,26 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		823BFB7A1D3C6DFD00F61BA3 /* MCRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 823BFB791D3C6DFD00F61BA3 /* MCRequestSerialization.m */; };
-		823BFB7D1D3C6E1600F61BA3 /* MCResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 823BFB7C1D3C6E1600F61BA3 /* MCResponseSerialization.m */; };
 		82B4195F1D1F876400040453 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B4195E1D1F876400040453 /* main.m */; };
 		82B419621D1F876400040453 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419611D1F876400040453 /* AppDelegate.m */; };
 		82B419651D1F876400040453 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419641D1F876400040453 /* ViewController.m */; };
 		82B419681D1F876500040453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B419661D1F876500040453 /* Main.storyboard */; };
 		82B4196A1D1F876500040453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B419691D1F876500040453 /* Assets.xcassets */; };
 		82B4196D1D1F876500040453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B4196B1D1F876500040453 /* LaunchScreen.storyboard */; };
-		82B4197A1D1F87BD00040453 /* MCURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419771D1F87BD00040453 /* MCURLSession.m */; };
-		82BCD0391D48998500E1DD3D /* MCMimeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BCD0381D48998500E1DD3D /* MCMimeType.m */; };
-		82EE1F051D3CCD910074C564 /* MCNetworkConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */; };
+		82FD54751D49DEDD007DE97A /* MCMimeType.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FD546A1D49DEDD007DE97A /* MCMimeType.m */; };
+		82FD54761D49DEDD007DE97A /* MCNetworkConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FD546D1D49DEDD007DE97A /* MCNetworkConfigure.m */; };
+		82FD54771D49DEDD007DE97A /* MCRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FD546F1D49DEDD007DE97A /* MCRequestSerialization.m */; };
+		82FD54781D49DEDD007DE97A /* MCResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FD54711D49DEDD007DE97A /* MCResponseSerialization.m */; };
+		82FD54791D49DEDD007DE97A /* MCURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FD54731D49DEDD007DE97A /* MCURLSession.m */; };
+		82FD547E1D49FDF5007DE97A /* NSData+MCContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FD547D1D49FDF5007DE97A /* NSData+MCContentType.m */; };
 		82FFB8111D45F6970079F92F /* a.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 82FFB8101D45F6970079F92F /* a.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		820563171D20061300F47C81 /* MCNetworkConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCNetworkConfigure.h; sourceTree = "<group>"; };
-		823BFB781D3C6DFD00F61BA3 /* MCRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRequestSerialization.h; sourceTree = "<group>"; };
-		823BFB791D3C6DFD00F61BA3 /* MCRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRequestSerialization.m; sourceTree = "<group>"; };
-		823BFB7B1D3C6E1600F61BA3 /* MCResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCResponseSerialization.h; sourceTree = "<group>"; };
-		823BFB7C1D3C6E1600F61BA3 /* MCResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCResponseSerialization.m; sourceTree = "<group>"; };
 		82B4195A1D1F876400040453 /* MCNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B4195E1D1F876400040453 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		82B419601D1F876400040453 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -37,12 +33,21 @@
 		82B419691D1F876500040453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82B4196C1D1F876500040453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82B4196E1D1F876500040453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		82B419751D1F87BD00040453 /* MCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetwork.h; sourceTree = "<group>"; };
-		82B419761D1F87BD00040453 /* MCURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSession.h; sourceTree = "<group>"; };
-		82B419771D1F87BD00040453 /* MCURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSession.m; sourceTree = "<group>"; };
-		82BCD0371D48998500E1DD3D /* MCMimeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMimeType.h; sourceTree = "<group>"; };
-		82BCD0381D48998500E1DD3D /* MCMimeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMimeType.m; sourceTree = "<group>"; };
-		82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkConfigure.m; sourceTree = "<group>"; };
+		82FD54691D49DEDD007DE97A /* MCMimeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCMimeType.h; sourceTree = "<group>"; };
+		82FD546A1D49DEDD007DE97A /* MCMimeType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCMimeType.m; sourceTree = "<group>"; };
+		82FD546B1D49DEDD007DE97A /* MCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetwork.h; sourceTree = "<group>"; };
+		82FD546C1D49DEDD007DE97A /* MCNetworkConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetworkConfigure.h; sourceTree = "<group>"; };
+		82FD546D1D49DEDD007DE97A /* MCNetworkConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCNetworkConfigure.m; sourceTree = "<group>"; };
+		82FD546E1D49DEDD007DE97A /* MCRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRequestSerialization.h; sourceTree = "<group>"; };
+		82FD546F1D49DEDD007DE97A /* MCRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRequestSerialization.m; sourceTree = "<group>"; };
+		82FD54701D49DEDD007DE97A /* MCResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCResponseSerialization.h; sourceTree = "<group>"; };
+		82FD54711D49DEDD007DE97A /* MCResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCResponseSerialization.m; sourceTree = "<group>"; };
+		82FD54721D49DEDD007DE97A /* MCURLSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCURLSession.h; sourceTree = "<group>"; };
+		82FD54731D49DEDD007DE97A /* MCURLSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCURLSession.m; sourceTree = "<group>"; };
+		82FD54741D49DEDD007DE97A /* MCNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCNetworking.h; sourceTree = "<group>"; };
+		82FD547B1D49FD5D007DE97A /* MCWebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCWebImage.h; sourceTree = "<group>"; };
+		82FD547C1D49FDF5007DE97A /* NSData+MCContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MCContentType.h"; sourceTree = "<group>"; };
+		82FD547D1D49FDF5007DE97A /* NSData+MCContentType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MCContentType.m"; sourceTree = "<group>"; };
 		82FFB8101D45F6970079F92F /* a.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = a.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				82FFB8101D45F6970079F92F /* a.jpg */,
-				82B419741D1F878200040453 /* MCNetwork */,
+				82FD54671D49DEDD007DE97A /* MCNetworking */,
 				82B419601D1F876400040453 /* AppDelegate.h */,
 				82B419611D1F876400040453 /* AppDelegate.m */,
 				82B419631D1F876400040453 /* ViewController.h */,
@@ -99,22 +104,42 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		82B419741D1F878200040453 /* MCNetwork */ = {
+		82FD54671D49DEDD007DE97A /* MCNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				82B419751D1F87BD00040453 /* MCNetwork.h */,
-				82BCD0371D48998500E1DD3D /* MCMimeType.h */,
-				82BCD0381D48998500E1DD3D /* MCMimeType.m */,
-				820563171D20061300F47C81 /* MCNetworkConfigure.h */,
-				82EE1F041D3CCD910074C564 /* MCNetworkConfigure.m */,
-				82B419761D1F87BD00040453 /* MCURLSession.h */,
-				82B419771D1F87BD00040453 /* MCURLSession.m */,
-				823BFB781D3C6DFD00F61BA3 /* MCRequestSerialization.h */,
-				823BFB791D3C6DFD00F61BA3 /* MCRequestSerialization.m */,
-				823BFB7B1D3C6E1600F61BA3 /* MCResponseSerialization.h */,
-				823BFB7C1D3C6E1600F61BA3 /* MCResponseSerialization.m */,
+				82FD54741D49DEDD007DE97A /* MCNetworking.h */,
+				82FD547A1D49FD47007DE97A /* MCWebImage */,
+				82FD54681D49DEDD007DE97A /* MCNetwork */,
+			);
+			path = MCNetworking;
+			sourceTree = "<group>";
+		};
+		82FD54681D49DEDD007DE97A /* MCNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				82FD546B1D49DEDD007DE97A /* MCNetwork.h */,
+				82FD54691D49DEDD007DE97A /* MCMimeType.h */,
+				82FD546A1D49DEDD007DE97A /* MCMimeType.m */,
+				82FD546C1D49DEDD007DE97A /* MCNetworkConfigure.h */,
+				82FD546D1D49DEDD007DE97A /* MCNetworkConfigure.m */,
+				82FD546E1D49DEDD007DE97A /* MCRequestSerialization.h */,
+				82FD546F1D49DEDD007DE97A /* MCRequestSerialization.m */,
+				82FD54701D49DEDD007DE97A /* MCResponseSerialization.h */,
+				82FD54711D49DEDD007DE97A /* MCResponseSerialization.m */,
+				82FD54721D49DEDD007DE97A /* MCURLSession.h */,
+				82FD54731D49DEDD007DE97A /* MCURLSession.m */,
 			);
 			path = MCNetwork;
+			sourceTree = "<group>";
+		};
+		82FD547A1D49FD47007DE97A /* MCWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				82FD547B1D49FD5D007DE97A /* MCWebImage.h */,
+				82FD547C1D49FDF5007DE97A /* NSData+MCContentType.h */,
+				82FD547D1D49FDF5007DE97A /* NSData+MCContentType.m */,
+			);
+			path = MCWebImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,14 +213,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82B4197A1D1F87BD00040453 /* MCURLSession.m in Sources */,
-				823BFB7A1D3C6DFD00F61BA3 /* MCRequestSerialization.m in Sources */,
+				82FD547E1D49FDF5007DE97A /* NSData+MCContentType.m in Sources */,
 				82B419651D1F876400040453 /* ViewController.m in Sources */,
 				82B419621D1F876400040453 /* AppDelegate.m in Sources */,
+				82FD54771D49DEDD007DE97A /* MCRequestSerialization.m in Sources */,
+				82FD54781D49DEDD007DE97A /* MCResponseSerialization.m in Sources */,
 				82B4195F1D1F876400040453 /* main.m in Sources */,
-				82EE1F051D3CCD910074C564 /* MCNetworkConfigure.m in Sources */,
-				82BCD0391D48998500E1DD3D /* MCMimeType.m in Sources */,
-				823BFB7D1D3C6E1600F61BA3 /* MCResponseSerialization.m in Sources */,
+				82FD54761D49DEDD007DE97A /* MCNetworkConfigure.m in Sources */,
+				82FD54751D49DEDD007DE97A /* MCMimeType.m in Sources */,
+				82FD54791D49DEDD007DE97A /* MCURLSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
