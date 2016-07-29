@@ -7,7 +7,7 @@
 //
 
 #import "MCWebImage.h"
-#import "WebP.framework/Headers/decode.h"//第三方用google的libwebp打的包，时间久远，不支持bitcode
+#import "WebP.framework/Headers/decode.h"
 #import <ImageIO/ImageIO.h>
 
 static void FreeImageData(void *info, const void *data, size_t size)
