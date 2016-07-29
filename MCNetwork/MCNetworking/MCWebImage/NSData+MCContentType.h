@@ -15,10 +15,12 @@ typedef NS_ENUM(NSInteger,MCContentType){
     MCContentTypeJPEG,
     MCContentTypeGIF,
     MCContentTypeTIFF,
+    MCContentTypeWEBP,
 };
 
 @interface NSData (MCContentType)
 
 -(MCContentType)mc_contentType;
+-(MCContentType)mc_imageType;
 
 @end

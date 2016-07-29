@@ -10,5 +10,7 @@
 #define MCWebImage_h
 
 #import "MCNetwork.h"
+#import "NSData+MCContentType.h"
+#import "UIImage+MCWebImage.h"
 
 #endif /* MCWebImage_h */
