@@ -11,6 +11,8 @@
 		82201DFC1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 82201DFB1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m */; };
 		82201DFE1D4AF2F400D6FBAA /* a.gif in Resources */ = {isa = PBXBuildFile; fileRef = 82201DFD1D4AF2F400D6FBAA /* a.gif */; };
 		82201E321D4B0B6200D6FBAA /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82201E311D4B0B6200D6FBAA /* WebP.framework */; };
+		8272F12B1D4EE53B003303A3 /* MCImageDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8272F12A1D4EE53B003303A3 /* MCImageDownloadManager.m */; };
+		8272F12E1D4EE9A7003303A3 /* MCWebImageConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 8272F12D1D4EE9A7003303A3 /* MCWebImageConfigure.m */; };
 		82B4195F1D1F876400040453 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B4195E1D1F876400040453 /* main.m */; };
 		82B419621D1F876400040453 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419611D1F876400040453 /* AppDelegate.m */; };
 		82B419651D1F876400040453 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B419641D1F876400040453 /* ViewController.m */; };
@@ -32,6 +34,10 @@
 		82201DFB1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MCWebImage.m"; sourceTree = "<group>"; };
 		82201DFD1D4AF2F400D6FBAA /* a.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = a.gif; sourceTree = "<group>"; };
 		82201E311D4B0B6200D6FBAA /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
+		8272F1291D4EE53B003303A3 /* MCImageDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCImageDownloadManager.h; sourceTree = "<group>"; };
+		8272F12A1D4EE53B003303A3 /* MCImageDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCImageDownloadManager.m; sourceTree = "<group>"; };
+		8272F12C1D4EE9A7003303A3 /* MCWebImageConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCWebImageConfigure.h; sourceTree = "<group>"; };
+		8272F12D1D4EE9A7003303A3 /* MCWebImageConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCWebImageConfigure.m; sourceTree = "<group>"; };
 		82B4195A1D1F876400040453 /* MCNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B4195E1D1F876400040453 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		82B419601D1F876400040453 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -149,10 +155,14 @@
 			children = (
 				82201E311D4B0B6200D6FBAA /* WebP.framework */,
 				82FD547B1D49FD5D007DE97A /* MCWebImage.h */,
+				8272F12C1D4EE9A7003303A3 /* MCWebImageConfigure.h */,
+				8272F12D1D4EE9A7003303A3 /* MCWebImageConfigure.m */,
 				82FD547C1D49FDF5007DE97A /* NSData+MCContentType.h */,
 				82FD547D1D49FDF5007DE97A /* NSData+MCContentType.m */,
 				82201DFA1D4AEF0A00D6FBAA /* UIImage+MCWebImage.h */,
 				82201DFB1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m */,
+				8272F1291D4EE53B003303A3 /* MCImageDownloadManager.h */,
+				8272F12A1D4EE53B003303A3 /* MCImageDownloadManager.m */,
 			);
 			path = MCWebImage;
 			sourceTree = "<group>";
@@ -235,7 +245,9 @@
 				82B419651D1F876400040453 /* ViewController.m in Sources */,
 				82B419621D1F876400040453 /* AppDelegate.m in Sources */,
 				82FD54771D49DEDD007DE97A /* MCRequestSerialization.m in Sources */,
+				8272F12B1D4EE53B003303A3 /* MCImageDownloadManager.m in Sources */,
 				82FD54781D49DEDD007DE97A /* MCResponseSerialization.m in Sources */,
+				8272F12E1D4EE9A7003303A3 /* MCWebImageConfigure.m in Sources */,
 				82B4195F1D1F876400040453 /* main.m in Sources */,
 				82FD54761D49DEDD007DE97A /* MCNetworkConfigure.m in Sources */,
 				82FD54751D49DEDD007DE97A /* MCMimeType.m in Sources */,
