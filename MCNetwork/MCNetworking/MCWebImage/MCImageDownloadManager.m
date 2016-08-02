@@ -10,11 +10,8 @@
 
 @interface MCImageDownloadManager ()
 
-@property(nonatomic,strong)MCURLSession *session;
+@property(nonatomic,strong,readwrite)MCURLSession *session;
 
-@property(nonatomic,copy)NSString *localPath;
-
-@property(nonatomic,strong)NSCache *imageCache;
 @end
 
 @implementation MCImageDownloadManager
@@ -43,23 +40,31 @@
     _session=[[MCURLSession alloc]init];
     return _session;
 }
--(NSString *)localPath{
-    if (_localPath) {
-        return _localPath;
-    }
-    _localPath=NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
-    _localPath=[_localPath stringByAppendingPathComponent:ImageLocalDirName];
-    return _localPath;
-}
--(NSCache *)imageCache{
-    if (_imageCache) {
-        return _imageCache;
-    }
-    _imageCache=[[NSCache alloc]init];
-    return _imageCache;
-}
-#pragma mark - Image Path
 
-#pragma mark - Cache
+#pragma mark - Download
+-(MCURLSessionTask *)downloadURL:(NSURL *)url progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete{
+    NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:url];
+    [lRequest setValue:@"image/webp,image/*;q=0.8" forHTTPHeaderField:HTTP_HEADER_ACCEPT];
+    return [self downloadRequest:lRequest progress:progress complete:complete];
+}
 
+-(MCURLSessionTask *)downloadRequest:(NSURLRequest *)request progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete{
+    return [self.session mc_taskWithRequest:request uploadProgress:nil downloadProgress:^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected) {
+        if (progress) {
+            progress(bytes,totalBytes,totalBytesExpected);
+        }
+    } complete:^(id responseObject, NSError *error) {
+        if (error) {
+            if (complete) {
+                complete(nil,nil,error);
+                return;
+            }
+        }
+        NSData *data=(NSData *)responseObject;
+        UIImage *image=[UIImage mc_imageWithData:data];
+        if (complete) {
+            complete(image,data,nil);
+        }
+    }];
+}
 @end

@@ -20,6 +20,9 @@ typedef void (^MCNetworkDidBecomeInvalidBlock)(NSError *error);
 UIKIT_EXTERN NSString* const GET_METHOD;
 UIKIT_EXTERN NSString* const POST_METHOD;
 
+//HTTP_HEADER_FIELD
+UIKIT_EXTERN NSString* const HTTP_HEADER_ACCEPT;
+
 //HTTP_KEY
 UIKIT_EXTERN NSString* const CONTENT_DISPOSITION;
 UIKIT_EXTERN NSString* const CONTENT_TYPE;

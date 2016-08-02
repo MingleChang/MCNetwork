@@ -11,6 +11,8 @@
 NSString* const GET_METHOD  =   @"GET";
 NSString* const POST_METHOD =   @"POST";
 
+NSString* const HTTP_HEADER_ACCEPT=@"Accept";
+
 NSString* const CONTENT_DISPOSITION=@"Content-Disposition";
 NSString* const CONTENT_TYPE    =   @"Content-Type";
 NSString* const CONTENT_LENGTH  =   @"Content-Length";

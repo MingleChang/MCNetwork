@@ -10,7 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface MCImageDownloadManager : NSObject
 
+@property(nonatomic,strong,readonly)MCURLSession *session;
 +(MCImageDownloadManager *)manager;
-
+-(MCURLSessionTask *)downloadURL:(NSURL *)url progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete;
+-(MCURLSessionTask *)downloadRequest:(NSURLRequest *)request progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete;
 @end
 NS_ASSUME_NONNULL_END

@@ -14,5 +14,9 @@
 #import "NSData+MCContentType.h"
 #import "UIImage+MCWebImage.h"
 #import "MCImageDownloadManager.h"
+#import "MCImageCacheManager.h"
+#import "UIImageView+MCWebImage.h"
+
+#import "NSString+MCWebImage.h"
 
 #endif /* MCWebImage_h */

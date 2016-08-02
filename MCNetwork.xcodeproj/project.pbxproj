@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		820668A11D5077F3003DC463 /* MCImageCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 820668A01D5077F3003DC463 /* MCImageCacheManager.m */; };
+		820668A41D507FDA003DC463 /* UIImageView+MCWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 820668A31D507FDA003DC463 /* UIImageView+MCWebImage.m */; };
+		820668A71D509192003DC463 /* NSString+MCWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 820668A61D509192003DC463 /* NSString+MCWebImage.m */; };
 		82201DF91D4AEA4700D6FBAA /* test0.webp in Resources */ = {isa = PBXBuildFile; fileRef = 82201DF81D4AEA4700D6FBAA /* test0.webp */; };
 		82201DFC1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 82201DFB1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m */; };
 		82201DFE1D4AF2F400D6FBAA /* a.gif in Resources */ = {isa = PBXBuildFile; fileRef = 82201DFD1D4AF2F400D6FBAA /* a.gif */; };
@@ -29,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8206689F1D5077F3003DC463 /* MCImageCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCImageCacheManager.h; sourceTree = "<group>"; };
+		820668A01D5077F3003DC463 /* MCImageCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCImageCacheManager.m; sourceTree = "<group>"; };
+		820668A21D507FDA003DC463 /* UIImageView+MCWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MCWebImage.h"; sourceTree = "<group>"; };
+		820668A31D507FDA003DC463 /* UIImageView+MCWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MCWebImage.m"; sourceTree = "<group>"; };
+		820668A51D509192003DC463 /* NSString+MCWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MCWebImage.h"; sourceTree = "<group>"; };
+		820668A61D509192003DC463 /* NSString+MCWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MCWebImage.m"; sourceTree = "<group>"; };
 		82201DF81D4AEA4700D6FBAA /* test0.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = test0.webp; sourceTree = "<group>"; };
 		82201DFA1D4AEF0A00D6FBAA /* UIImage+MCWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MCWebImage.h"; sourceTree = "<group>"; };
 		82201DFB1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+MCWebImage.m"; sourceTree = "<group>"; };
@@ -163,6 +172,12 @@
 				82201DFB1D4AEF0A00D6FBAA /* UIImage+MCWebImage.m */,
 				8272F1291D4EE53B003303A3 /* MCImageDownloadManager.h */,
 				8272F12A1D4EE53B003303A3 /* MCImageDownloadManager.m */,
+				8206689F1D5077F3003DC463 /* MCImageCacheManager.h */,
+				820668A01D5077F3003DC463 /* MCImageCacheManager.m */,
+				820668A21D507FDA003DC463 /* UIImageView+MCWebImage.h */,
+				820668A31D507FDA003DC463 /* UIImageView+MCWebImage.m */,
+				820668A51D509192003DC463 /* NSString+MCWebImage.h */,
+				820668A61D509192003DC463 /* NSString+MCWebImage.m */,
 			);
 			path = MCWebImage;
 			sourceTree = "<group>";
@@ -246,12 +261,15 @@
 				82B419621D1F876400040453 /* AppDelegate.m in Sources */,
 				82FD54771D49DEDD007DE97A /* MCRequestSerialization.m in Sources */,
 				8272F12B1D4EE53B003303A3 /* MCImageDownloadManager.m in Sources */,
+				820668A71D509192003DC463 /* NSString+MCWebImage.m in Sources */,
 				82FD54781D49DEDD007DE97A /* MCResponseSerialization.m in Sources */,
 				8272F12E1D4EE9A7003303A3 /* MCWebImageConfigure.m in Sources */,
 				82B4195F1D1F876400040453 /* main.m in Sources */,
+				820668A11D5077F3003DC463 /* MCImageCacheManager.m in Sources */,
 				82FD54761D49DEDD007DE97A /* MCNetworkConfigure.m in Sources */,
 				82FD54751D49DEDD007DE97A /* MCMimeType.m in Sources */,
 				82FD54791D49DEDD007DE97A /* MCURLSession.m in Sources */,
+				820668A41D507FDA003DC463 /* UIImageView+MCWebImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

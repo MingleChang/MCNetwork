@@ -30,10 +30,16 @@
 }
 
 - (IBAction)buttonClick:(UIButton *)sender {
-    NSString *lString=[[NSBundle mainBundle]pathForResource:@"test0" ofType:@"webp"];
-    NSData *lData=[NSData dataWithContentsOfFile:lString];
-    UIImage *lImage=[UIImage mc_imageWithData:lData];
-    self.imageView.image=lImage;
+    [self.imageView mc_setImageWith:[NSURL URLWithString:@"http://images.unknowntech.cn/2016-07-19/d7fe6120-e8fe-4ef9-922d-de79d096c59c.jpg"] placeholder:[UIImage imageNamed:@"a.jpg"] options:0 progress:^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected) {
+        NSLog(@"DOWNLOAD %lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
+    } completed:^(UIImage *image, NSData *data, NSError *error) {
+        NSLog(@"image:%@\nerror:%@",image,error);
+    }];
+    
+//    NSString *lString=[[NSBundle mainBundle]pathForResource:@"test0" ofType:@"webp"];
+//    NSData *lData=[NSData dataWithContentsOfFile:lString];
+//    UIImage *lImage=[UIImage mc_imageWithData:lData];
+//    self.imageView.image=lImage;
     
 //    NSString *lURLString=@"http://appapi.unknowntech.cn:7140/postForm";
 //    NSDictionary *lDic=@{@"dateStamp":@"1468828104",@"isFastLogin":@"2",@"isOwner":@"1",@"password":@"e10adc3949ba59abbe56e057f20f883e",@"uri":@"/user/login",@"username":@"18680752435"};
