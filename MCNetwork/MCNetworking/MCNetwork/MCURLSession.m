@@ -185,12 +185,38 @@
     return task;
 }
 -(MCURLSessionTask *)mc_GET:(NSString *)urlString
+                   complete:(MCNetworkCompleteBlock __nullable)complete{
+    return [self mc_GET:urlString andParam:nil complete:complete];
+}
+-(MCURLSessionTask *)mc_GET:(NSString *)urlString
                    andParam:(NSDictionary * __nullable)param
-             uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
+                   complete:(MCNetworkCompleteBlock __nullable)complete{
+    return [self mc_GET:urlString andParam:param downloadProgress:nil complete:complete];
+}
+-(MCURLSessionTask *)mc_GET:(NSString *)urlString
+                   andParam:(NSDictionary * __nullable)param
            downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
                    complete:(MCNetworkCompleteBlock __nullable)complete{
     NSURLRequest *lRequest=[self.requestSerialization requestMethod:GET_METHOD withURLString:urlString andParam:param andFormData:nil];
-    return [self mc_taskWithRequest:lRequest uploadProgress:uploadProgress downloadProgress:downloadProgress complete:complete];
+    return [self mc_taskWithRequest:lRequest uploadProgress:nil downloadProgress:downloadProgress complete:complete];
+}
+
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+                    complete:(MCNetworkCompleteBlock __nullable)complete{
+    return [self mc_POST:urlString andParam:param uploadProgress:nil downloadProgress:nil complete:complete];
+}
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+              uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
+                    complete:(MCNetworkCompleteBlock __nullable)complete{
+    return [self mc_POST:urlString andParam:param uploadProgress:uploadProgress downloadProgress:nil complete:complete];
+}
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+            downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
+                    complete:(MCNetworkCompleteBlock __nullable)complete{
+    return [self mc_POST:urlString andParam:param uploadProgress:nil downloadProgress:downloadProgress complete:complete];
 }
 -(MCURLSessionTask *)mc_POST:(NSString *)urlString
                     andParam:(NSDictionary * __nullable)param

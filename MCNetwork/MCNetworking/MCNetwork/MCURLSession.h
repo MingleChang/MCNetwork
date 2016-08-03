@@ -66,10 +66,30 @@ NS_ASSUME_NONNULL_BEGIN
                         downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
                                complete:(MCNetworkCompleteBlock __nullable)complete;
 
+-(MCURLSessionTask *)mc_GET:(NSString *)urlString
+                   complete:(MCNetworkCompleteBlock __nullable)complete;
+
+-(MCURLSessionTask *)mc_GET:(NSString *)urlString
+                   andParam:(NSDictionary * __nullable)param
+                   complete:(MCNetworkCompleteBlock __nullable)complete;
+
 -(MCURLSessionTask *)mc_GET:(NSString *)urlString andParam:(NSDictionary * __nullable)param
-             uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
            downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
                    complete:(MCNetworkCompleteBlock __nullable)complete;
+
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+                    complete:(MCNetworkCompleteBlock __nullable)complete;
+
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+              uploadProgress:(MCNetworkProgressBlock __nullable)uploadProgress
+                    complete:(MCNetworkCompleteBlock __nullable)complete;
+
+-(MCURLSessionTask *)mc_POST:(NSString *)urlString
+                    andParam:(NSDictionary * __nullable)param
+            downloadProgress:(MCNetworkProgressBlock __nullable)downloadProgress
+                    complete:(MCNetworkCompleteBlock __nullable)complete;
 
 -(MCURLSessionTask *)mc_POST:(NSString *)urlString
                     andParam:(NSDictionary * __nullable)param
