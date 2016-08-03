@@ -42,6 +42,10 @@
 }
 
 #pragma mark - Download
+-(MCURLSessionTask *)downloadURLString:(NSString *)urlString progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete{
+    NSURL *lURL=[NSURL URLWithString:urlString];
+    return [self downloadURL:lURL progress:progress complete:complete];
+}
 -(MCURLSessionTask *)downloadURL:(NSURL *)url progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete{
     NSMutableURLRequest *lRequest=[NSMutableURLRequest requestWithURL:url];
     [lRequest setValue:@"image/webp,image/*;q=0.8" forHTTPHeaderField:HTTP_HEADER_ACCEPT];

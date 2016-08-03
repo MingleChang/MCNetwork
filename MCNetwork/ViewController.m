@@ -30,7 +30,7 @@
 }
 
 - (IBAction)buttonClick:(UIButton *)sender {
-    [self.imageView mc_setImageWith:[NSURL URLWithString:@"http://images.unknowntech.cn/2016-07-19/d7fe6120-e8fe-4ef9-922d-de79d096c59c.jpg"] placeholder:[UIImage imageNamed:@"a.jpg"] options:0 progress:^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected) {
+    [self.imageView mc_setImageWith:@"http://images.unknowntech.cn/2016-07-19/d7fe6120-e8fe-4ef9-922d-de79d096c59c.jpg" placeholder:[UIImage imageNamed:@"a.jpg"] options:0 progress:^(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected) {
         NSLog(@"DOWNLOAD %lli,%lli,%lli",bytes,totalBytes,totalBytesExpected);
     } completed:^(UIImage *image, NSData *data, NSError *error) {
         NSLog(@"image:%@\nerror:%@",image,error);

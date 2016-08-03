@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,strong,readonly)MCURLSession *session;
 +(MCImageDownloadManager *)manager;
+-(MCURLSessionTask *)downloadURLString:(NSString *)urlString progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete;
 -(MCURLSessionTask *)downloadURL:(NSURL *)url progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete;
 -(MCURLSessionTask *)downloadRequest:(NSURLRequest *)request progress:(MCWebImageProgressBlock __nullable)progress complete:(MCWebImageCompleteBlock)complete;
 @end

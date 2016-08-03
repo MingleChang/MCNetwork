@@ -77,6 +77,7 @@
     NSString *lPath=[self imagePathWith:key];
     [data writeToFile:lPath atomically:YES];
 }
+
 -(UIImage *)imageCacheWith:(NSString *)key{
     UIImage *lMemoryImage=[self imageMemoryCacheWith:key];
     if (lMemoryImage) {
