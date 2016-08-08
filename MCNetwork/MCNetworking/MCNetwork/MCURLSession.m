@@ -245,7 +245,16 @@
 }
 // 处理用户验证
 -(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{
-    completionHandler(NSURLSessionAuthChallengeUseCredential,nil);
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    __block NSURLCredential *credential = nil;
+    if (self.didReceiveAuthenticationChallengeBlock) {
+        disposition=self.didReceiveAuthenticationChallengeBlock(challenge,&credential);
+    }else{
+//        disposition=NSURLSessionAuthChallengeUseCredential;
+    }
+    if (completionHandler) {
+        completionHandler(disposition,credential);
+    }
 }
 // 如果用户启用后台下载，当应用在后台下载完所有的task之后将会调用该方法
 -(void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session{
@@ -259,11 +268,31 @@
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * __nullable credential))completionHandler{
-    
+    MCURLSessionTask *sessionTask=[self findTaskBySessionTask:task];
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    __block NSURLCredential *credential = nil;
+    if (self.taskDidReceiveAuthenticationChallengeBlock && sessionTask) {
+        disposition=self.taskDidReceiveAuthenticationChallengeBlock(sessionTask,challenge,&credential);
+    }else{
+//        disposition=NSURLSessionAuthChallengeUseCredential;
+    }
+    if (completionHandler) {
+        completionHandler(disposition,credential);
+    }
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStream:(void (^)(NSInputStream * __nullable bodyStream))completionHandler{
+    NSInputStream *inputStream = nil;
+    MCURLSessionTask *sessionTask=[self findTaskBySessionTask:task];
+    if (self.taskNeedNewBodyStreamBlock && sessionTask) {
+        inputStream = self.taskNeedNewBodyStreamBlock(sessionTask);
+    } else if (task.originalRequest.HTTPBodyStream && [task.originalRequest.HTTPBodyStream conformsToProtocol:@protocol(NSCopying)]) {
+        inputStream = [task.originalRequest.HTTPBodyStream copy];
+    }
     
+    if (completionHandler) {
+        completionHandler(inputStream);
+    }
 }
 //使用POST上传数据，如果request的httpBody有内容方会进入该方法
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend{
@@ -285,10 +314,29 @@
 
 #pragma mark - NSURLSessionData Delegate
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
-    completionHandler(NSURLSessionResponseAllow);
+    NSURLSessionResponseDisposition disposition = NSURLSessionResponseAllow;
+    MCURLSessionTask *sessionTask=[self findTaskBySessionTask:dataTask];
+    if (self.dataTaskDidReceiveResponseBlock && sessionTask) {
+        disposition = self.dataTaskDidReceiveResponseBlock(sessionTask, response);
+    }
+    
+    if (completionHandler) {
+        completionHandler(disposition);
+    }
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask{
+    MCURLSessionTask *dataSessionTask=[self findTaskBySessionTask:dataTask];
+    MCURLSessionTask *downloadSessionTask=[MCURLSessionTask mc_taskWithSessionTask:downloadTask];
+    if (dataSessionTask) {
+        [self removeTask:dataSessionTask];
+    }else{
+        dataSessionTask=[MCURLSessionTask mc_taskWithSessionTask:dataTask];
+    }
+    [self addTask:downloadSessionTask];
     
+    if (self.dataTaskDidBecomeDownloadTaskBlock && dataSessionTask && downloadSessionTask) {
+        self.dataTaskDidBecomeDownloadTaskBlock(dataSessionTask,downloadSessionTask);
+    }
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask{
     
@@ -302,6 +350,15 @@
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse * __nullable cachedResponse))completionHandler{
     completionHandler(proposedResponse);
+    NSCachedURLResponse *cachedResponse = proposedResponse;
+    MCURLSessionTask *sessionTask=[self findTaskBySessionTask:dataTask];
+    if (self.dataTaskWillCacheResponseBlock) {
+        cachedResponse = self.dataTaskWillCacheResponseBlock(sessionTask, proposedResponse);
+    }
+    
+    if (completionHandler) {
+        completionHandler(cachedResponse);
+    }
 }
 
 #pragma mark - NSURLSessionDownload Delegate

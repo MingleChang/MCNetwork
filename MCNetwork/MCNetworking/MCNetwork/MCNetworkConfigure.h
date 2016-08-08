@@ -9,12 +9,20 @@
 #ifndef MCNetworkConfigure_h
 #define MCNetworkConfigure_h
 
+@class MCURLSessionTask;
+
 #import <UIKit/UIKit.h>
 #import "MCMimeType.h"
 
 typedef void (^MCNetworkProgressBlock)(int64_t bytes, int64_t totalBytes, int64_t totalBytesExpected);
 typedef void (^MCNetworkCompleteBlock)(id responseObject, NSError *error);
 typedef void (^MCNetworkDidBecomeInvalidBlock)(NSError *error);
+typedef NSURLSessionAuthChallengeDisposition (^MCNetworkDidReceiveAuthenticationChallengeBlock)(NSURLAuthenticationChallenge *challenge, NSURLCredential * __autoreleasing *credential);
+typedef NSURLSessionAuthChallengeDisposition (^MCNetworkTaskDidReceiveAuthenticationChallengeBlock)(MCURLSessionTask *task, NSURLAuthenticationChallenge *challenge, NSURLCredential * __autoreleasing *credential);
+typedef NSInputStream * (^MCNetworkTaskNeedNewBodyStreamBlock)(MCURLSessionTask *task);
+typedef NSURLSessionResponseDisposition (^MCNetworkDataTaskDidReceiveResponseBlock)(MCURLSessionTask *dataTask, NSURLResponse *response);
+typedef void (^MCNetworkDataTaskDidBecomeDownloadTaskBlock)(MCURLSessionTask *dataTask, MCURLSessionTask *downloadTask);
+typedef NSCachedURLResponse * (^MCNetworkDataTaskWillCacheResponseBlock)(MCURLSessionTask *dataTask, NSCachedURLResponse *proposedResponse);
 
 //HTTP_METHOD
 UIKIT_EXTERN NSString* const GET_METHOD;

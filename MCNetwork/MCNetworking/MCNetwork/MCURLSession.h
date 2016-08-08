@@ -56,7 +56,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong,readonly)NSOperationQueue *operationQueue;
 
 @property(nonatomic,copy)MCNetworkDidBecomeInvalidBlock didBecomeInvalidBlock;
-
+@property(nonatomic,copy)MCNetworkDidReceiveAuthenticationChallengeBlock didReceiveAuthenticationChallengeBlock;
+@property(nonatomic,copy)MCNetworkTaskDidReceiveAuthenticationChallengeBlock taskDidReceiveAuthenticationChallengeBlock;
+@property(nonatomic,copy)MCNetworkTaskNeedNewBodyStreamBlock taskNeedNewBodyStreamBlock;
+@property(nonatomic,copy)MCNetworkDataTaskDidReceiveResponseBlock dataTaskDidReceiveResponseBlock;
+@property(nonatomic,copy)MCNetworkDataTaskDidBecomeDownloadTaskBlock dataTaskDidBecomeDownloadTaskBlock;
+@property(nonatomic,copy)MCNetworkDataTaskWillCacheResponseBlock dataTaskWillCacheResponseBlock;
 
 @property(nonatomic,strong)id<MCRequestSerialization> requestSerialization;
 @property(nonatomic,strong)id<MCResponseSerialization> responseSerialization;
